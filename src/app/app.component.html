@@ -1,0 +1,40 @@
+<header>
+  <meta charset="utf-8">
+</header>
+
+<main>
+
+  <div class="container">
+
+    <h2 class="center-align">Cash Tracking</h2>
+
+    <h2 class="center-align" id = "numeros">{{ (valorAhorita | currency : "$") || '$0.00'}}</h2>
+    <div class="row center">
+      <div class="input-field col s12">
+        <label for="valorInicial">Amount</label>
+        <input #valor placeholder="$0.00" id="valorInicial" type="number" min="0" class="validate">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s6 center-align">
+          <a id = "Ingreso"class="waves-effect waves-light btn-large green" (click)="incomeValue(valor)">Income</a>
+      </div>
+      <div class="col s6 center-align">
+        <a id="Gastos"class="waves-effect waves-light btn-large red" (click)="expenseValue(valor)">Expense</a>
+      </div>
+    </div>
+
+    <div>
+      <h4>Transactions</h4>
+      <ul class="collection">
+        <li class="collection-item" *ngFor="let valor of transacciones">{{valor | currency : "$"}}</li>
+      </ul>
+    </div>
+  </div>
+</main>
+
+<footer>
+</footer>
+
+<router-outlet></router-outlet>
